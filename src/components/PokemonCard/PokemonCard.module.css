@@ -1,45 +1,4 @@
-@keyframes top-bottom {
-  from {
-    transform: translateY(-150px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0px);
-    opacity: 1;
-  }
-}
-@keyframes bottom-top {
-  from {
-    transform: translateY(150px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0px);
-    opacity: 1;
-  }
-}
-@keyframes left-right {
-  from {
-    transform: translateX(-150px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0px);
-    opacity: 1;
-  }
-}
-@keyframes right-left {
-  from {
-    transform: translateX(150px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0px);
-    opacity: 1;
-  }
-}
 
-/* rgb(55, 52, 95) */
 
 .pokemonCard {
   background-color: rgb(42, 40, 51);
@@ -49,7 +8,7 @@
   transition: all 0.2s ease;
   cursor: pointer;
   width: 100%;
-  max-width: 170px;
+  max-width: 160px;
 }
 
 .pokemonCard.left-right {

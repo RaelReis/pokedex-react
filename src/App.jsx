@@ -1,3 +1,4 @@
+import { Footer } from './components/Footer/Footer';
 import { PokedexMain } from './components/PokedexMain/PokedexMain';
 import { SearchArea } from './components/SearchArea/SearchArea';
 import { usePokemon } from './context/hooks/usePokemon';
@@ -12,6 +13,7 @@ function App() {
         <>
           <SearchArea />
           <PokedexMain />
+          <Footer />
         </>
       )}
     </div>

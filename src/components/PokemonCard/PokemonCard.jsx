@@ -21,7 +21,7 @@ export function PokemonCard({ pokeData }) {
 
   return (
     <>
-      <div
+      <li
         style={!imageLoaded ? { display: 'none' } : null}
         className={`${styles.pokemonCard} ${pokemon.id === +pokeId ? styles.selectedPokemonCard : ''} `}
         onClick={handleSelectPokemon}
@@ -36,7 +36,7 @@ export function PokemonCard({ pokeData }) {
           />
         </div>
         <h3 className={styles.pokemonName}>{pokeData.name}</h3>
-      </div>
+      </li>
     </>
   );
 }
