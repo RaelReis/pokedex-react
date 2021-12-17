@@ -7,13 +7,14 @@ import { usePokemon } from '../../context/hooks/usePokemon';
 export function SearchArea() {
   const [search, setSearch] = useState('');
   const [searchError, setSearchError] = useState(false);
-  const { setPokemon } = usePokemon();
+  const { setPokemon, setPokedexOffSet } = usePokemon();
 
   async function searchPokemon() {
     setSearchError(false);
     try {
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${search.toLowerCase().trim()}/`);
       setPokemon(response.data);
+      setPokedexOffSet(response.data.id - 1);
     } catch (e) {
       console.log('error', e);
       setSearchError(true);
@@ -30,7 +31,6 @@ export function SearchArea() {
       <div className={styles.logoBox}>
         <img src={pokedexLogo} alt="Pokedex Logo" />
         <h1>PokeDex</h1>
-        {console.log('remontado ?')}
       </div>
       <form className={styles.inputBox} onSubmit={handleSubmit}>
         <input

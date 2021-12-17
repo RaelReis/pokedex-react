@@ -9,12 +9,15 @@ import { typesColor, typesRgbaColor } from '../../assets/style/colorpalette';
 import { usePokemon } from '../../context/hooks/usePokemon';
 
 export function PokemonInfoCard() {
-  const { pokemon, setPokemon } = usePokemon();
+  const { pokemon, setPokemon, pokedexOffSet, setPokedexOffSet } = usePokemon();
 
   async function loadPreviousPokemon() {
     try {
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.id - 1}/`);
       setPokemon(response.data);
+      if (pokedexOffSet >= pokemon.id - 1) {
+        setPokedexOffSet(pokemon.id - 16);
+      }
     } catch (e) {
       console.log('Error on previous pokemon request', e);
     }
@@ -24,6 +27,9 @@ export function PokemonInfoCard() {
     try {
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.id + 1}/`);
       setPokemon(response.data);
+      if (pokedexOffSet + 15 <= pokemon.id) {
+        setPokedexOffSet(pokemon.id);
+      }
     } catch (e) {
       console.log('Error on next pokemon request', e);
     }
