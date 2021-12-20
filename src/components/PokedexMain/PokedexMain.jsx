@@ -13,7 +13,7 @@ export function PokedexMain() {
 
   return (
     <div className={styles.pokemonInfoContainer}>
-      <div className={styles.pokemonContainer} style={!listLoaded ? { margin: '0 auto' } : {}}>
+      <div style={!listLoaded ? { margin: '0 auto' } : {}}>
         {!listLoaded && <LoadingSpinner />}
         {listLoaded && (
           <ul className={styles.pokemonBox}>

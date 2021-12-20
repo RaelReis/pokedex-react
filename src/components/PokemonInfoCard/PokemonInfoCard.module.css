@@ -24,8 +24,9 @@
   flex-direction: column;
   align-items: center;
   animation: opacity 2s;
+  min-height: 550px;
+  
 }
-
 
 .pokemonImage {
   position: absolute;
@@ -91,4 +92,30 @@
 .nextPokemonButton:hover {
   transform: scale(110%);
   opacity: 1;
+}
+
+@media (max-width: 1600px) {
+  .pokemonInfoCard {
+    max-width: 350px;
+    max-height: 550px;
+  }
+}
+
+@media (max-width: 500px) {
+  .pokemonInfoCard {
+    max-width: 300px;
+    min-height: 450px;
+  }
+  .nextPokemonButton {
+    right: 0;
+    bottom: 5px;
+    /* width: 80%; */
+    margin: 0 15px
+  }
+  .previousPokemonButton {
+    left: 0;
+    bottom: 5px;
+    /* width: 80%; */
+    margin: 0 15px
+  }
 }

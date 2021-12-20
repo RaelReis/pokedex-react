@@ -141,3 +141,15 @@
     max-width: 120px;
   }
 }
+
+@media(max-width: 500px) {
+  .pokemonCard {
+    max-width: 90px;
+  }
+}
+@media(max-width: 400px) {
+  .pokemonCard {
+    max-width: 130px;
+  }
+}
+

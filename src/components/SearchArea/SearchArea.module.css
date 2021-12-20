@@ -49,3 +49,9 @@
   transform: scale(100%);
   opacity: 1;
 }
+
+@media (max-width: 1050px) {
+  .inputBox {
+    width: 60%;
+  }
+}
