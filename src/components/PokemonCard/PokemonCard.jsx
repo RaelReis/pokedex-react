@@ -1,8 +1,8 @@
-import styles from './PokemonCard.module.css';
-import defaultPokemon from '../../assets/img/default_pokemon.svg';
 import axios from 'axios';
-import { usePokemon } from '../../context/hooks/usePokemon';
+import styles from './PokemonCard.module.css';
 import { useState } from 'react';
+import { usePokemon } from '../../context/hooks/usePokemon';
+import defaultPokemon from '../../assets/img/default_pokemon.svg';
 
 export function PokemonCard({ pokeData }) {
   const { pokemon, setPokemon } = usePokemon();
@@ -20,23 +20,21 @@ export function PokemonCard({ pokeData }) {
   }
 
   return (
-    <>
-      <li
-        style={!imageLoaded ? { display: 'none' } : null}
-        className={`${styles.pokemonCard} ${pokemon.id === +pokeId ? styles.selectedPokemonCard : ''} `}
-        onClick={handleSelectPokemon}
-      >
-        <div className={styles.pokemonWhiteArea}>
-          <span className={styles.pokemonId}>{`#${pokeId}`}</span>
-          <img
-            className={styles.pokemonImg}
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokeId}.png` || defaultPokemon}
-            onLoad={() => setImageLoaded(true)}
-            alt={`${pokeData.name}`}
-          />
-        </div>
-        <h3 className={styles.pokemonName}>{pokeData.name}</h3>
-      </li>
-    </>
+    <li
+      style={!imageLoaded ? { display: 'none' } : null}
+      className={`${styles.pokemonCard} ${pokemon.id === +pokeId ? styles.selectedPokemonCard : ''} `}
+      onClick={handleSelectPokemon}
+    >
+      <div className={styles.pokemonWhiteArea}>
+        <span className={styles.pokemonId}>{`#${pokeId}`}</span>
+        <img
+          className={styles.pokemonImg}
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokeId}.png` || defaultPokemon}
+          onLoad={() => setImageLoaded(true)}
+          alt={`${pokeData.name}`}
+        />
+      </div>
+      <h3 className={styles.pokemonName}>{pokeData.name}</h3>
+    </li>
   );
 }

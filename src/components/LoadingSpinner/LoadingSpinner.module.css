@@ -29,7 +29,7 @@
   content: '';
 }
 .loader:after {
-  background: #1a1a2c;
+  background: var(--primaryColor);
   width: 75%;
   height: 75%;
   border-radius: 50%;

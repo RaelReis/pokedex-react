@@ -1,8 +1,9 @@
-import styles from './SearchArea.module.css';
-import pokedexLogo from '../../assets/img/pokedex_logo.svg';
-import { useState } from 'react';
 import axios from 'axios';
+import styles from './SearchArea.module.css';
+import { useState } from 'react';
 import { usePokemon } from '../../context/hooks/usePokemon';
+
+import pokedexLogo from '../../assets/img/pokedex_logo.svg';
 
 export function SearchArea() {
   const [search, setSearch] = useState('');
@@ -14,10 +15,38 @@ export function SearchArea() {
     try {
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${search.toLowerCase().trim()}/`);
       setPokemon(response.data);
-      setPokedexOffSet(response.data.id - 1);
+      handleOffSet(response.data.id - 1);
     } catch (e) {
       console.log('error', e);
       setSearchError(true);
+    }
+  }
+
+  function handleOffSet(id) {
+    for (let pokeOffSet = 0; pokeOffSet < 898; pokeOffSet += 15) {
+      if (id >= pokeOffSet && id <= pokeOffSet + 15) {
+        setPokedexOffSet(pokeOffSet);
+      }
+    }
+  }
+
+  function handleRandomButton() {
+    const randomPokedexIdGenerator = (Pokedexlimit = 898) => {
+      const screeShownPoke = 16;
+      const generated = Math.floor(Math.random() * Pokedexlimit - screeShownPoke);
+      return generated >= 0 && generated !== pokedexOffSet && generated <= Pokedexlimit - screeShownPoke ? generated : randomPokedexIdGenerator();
+    };
+    const randomId = randomPokedexIdGenerator();
+    handleOffSet(randomId);
+    handleRandomPokemon(randomId);
+  }
+
+  async function handleRandomPokemon(randomNumber) {
+    try {
+      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${randomNumber}/`);
+      setPokemon(response.data);
+    } catch (e) {
+      console.log(e);
     }
   }
 
@@ -26,27 +55,8 @@ export function SearchArea() {
     searchPokemon(search);
   }
 
-  function handleRandomButton() {
-    const randomPokedexIdGenerator = (Pokedexlimit = 898) => {
-      const generated = Math.floor(Math.random() * Pokedexlimit - 16);
-      return generated >= 0 && generated !== pokedexOffSet ? generated : randomPokedexIdGenerator();
-    };
-    const randomId = randomPokedexIdGenerator();
-    setPokedexOffSet(randomId);
-    handleFirstPokemonRandom(randomId);
-  }
-
-  async function handleFirstPokemonRandom(offSet) {
-    try {
-      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${offSet + 1}/`);
-      setPokemon(response.data);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
   return (
-    <div className={styles.searchAreaContainer}>
+    <header className={styles.searchAreaContainer}>
       <div className={styles.logoBox}>
         <img src={pokedexLogo} alt="Pokedex Logo" />
         <h1>PokeDex</h1>
@@ -65,6 +75,6 @@ export function SearchArea() {
         />
         <button className={styles.searchButton} type="submit" />
       </form>
-    </div>
+    </header>
   );
 }

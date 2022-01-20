@@ -13,9 +13,9 @@ function App() {
         <>
           <SearchArea />
           <PokedexMain />
-          <Footer />
         </>
       )}
+      <Footer />
     </div>
   );
 }

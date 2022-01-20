@@ -1,0 +1,16 @@
+.socialButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 99px;
+  border: 2px solid #fff;
+  background-color: transparent;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.socialButton:hover {
+  background-color: #707096;
+}

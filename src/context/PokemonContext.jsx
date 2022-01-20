@@ -26,6 +26,8 @@ export default function PokemonProvider({ children }) {
     (async function () {
       setListLoaded(false);
       try {
+        if (pokedexOffSet >= 898) setPokedexOffSet(883);
+        console.log('ESTOU ATUALIZANDO O OFFSET');
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=15&offset=${pokedexOffSet}`);
         setPokemonList(response.data);
         setListLoaded(true);

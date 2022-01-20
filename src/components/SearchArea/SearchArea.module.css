@@ -42,7 +42,7 @@
   background: url(../../assets/img/search_logo.svg);
   background-position: center center;
   cursor: pointer;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 
 .searchButton:hover {
@@ -54,4 +54,14 @@
   .inputBox {
     width: 60%;
   }
+}
+
+.element {
+  height: 200px;
+  width: 200px;
+}
+
+.element .icon {
+  height: 100%;
+  width: 100%;
 }

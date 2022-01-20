@@ -1,7 +1,5 @@
-
-
 .pokemonCard {
-  background-color: rgb(42, 40, 51);
+  background-color: var(--secondaryColor);
   margin: 10px;
   border-radius: 20px;
   border: 2px solid transparent;
@@ -12,16 +10,16 @@
 }
 
 .pokemonCard.left-right {
-  animation: left-right .2s;
+  animation: left-right 0.2s;
 }
 .pokemonCard.right-left {
-  animation: right-left .2s;
+  animation: right-left 0.2s;
 }
 .pokemonCard.top-bottom {
-  animation: top-bottom .2s;
+  animation: top-bottom 0.2s;
 }
 .pokemonCard.bottom-top {
-  animation: bottom-top .2s;
+  animation: bottom-top 0.2s;
 }
 
 .selectedPokemonCard {
@@ -34,7 +32,7 @@
   display: flex;
   flex-direction: column;
   margin: 2px;
-  background-color: #1a1a2c;
+  background-color: var(--primaryColor);
   border-top-left-radius: 17px;
   border-top-right-radius: 17px;
   /* align-items: center; */
@@ -142,14 +140,13 @@
   }
 }
 
-@media(max-width: 500px) {
+@media (max-width: 500px) {
   .pokemonCard {
     max-width: 90px;
   }
 }
-@media(max-width: 400px) {
+@media (max-width: 400px) {
   .pokemonCard {
     max-width: 130px;
   }
 }
-

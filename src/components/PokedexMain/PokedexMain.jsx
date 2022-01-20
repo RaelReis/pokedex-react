@@ -1,8 +1,8 @@
+import styles from './PokedexMain.module.css';
 import { usePokemon } from '../../context/hooks/usePokemon';
 import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner';
 import { PokemonCard } from '../PokemonCard/PokemonCard';
 import { PokemonInfoCard } from '../PokemonInfoCard/PokemonInfoCard';
-import styles from './PokedexMain.module.css';
 
 export function PokedexMain() {
   const { setPokemon, pokemonList, listLoaded } = usePokemon();
@@ -12,7 +12,7 @@ export function PokedexMain() {
   }
 
   return (
-    <div className={styles.pokemonInfoContainer}>
+    <main className={styles.pokemonInfoContainer}>
       <div style={!listLoaded ? { margin: '0 auto' } : {}}>
         {!listLoaded && <LoadingSpinner />}
         {listLoaded && (
@@ -23,6 +23,6 @@ export function PokedexMain() {
         )}
       </div>
       <PokemonInfoCard />
-    </div>
+    </main>
   );
 }
