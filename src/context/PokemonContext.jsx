@@ -7,7 +7,7 @@ export const PokemonContext = createContext();
 export default function PokemonProvider({ children }) {
   const [pokemon, setPokemon] = useState(null);
   const [pokedexOffSet, setPokedexOffSet] = useState(384);
-  const [pokemonList, setPokemonList] = useState(null);
+  const [pokemonList, setPokemonList] = useState([]);
   const [listLoaded, setListLoaded] = useState(false);
 
   useEffect(() => {
@@ -23,13 +23,24 @@ export default function PokemonProvider({ children }) {
   }, []);
 
   useEffect(() => {
+    setListLoaded(false);
+    setPokemonList([]);
+
+    if (pokedexOffSet >= 898) {
+      setPokedexOffSet(883);
+    }
+
+    if (pokedexOffSet < 0) {
+      setPokedexOffSet(1);
+    }
+
     (async function () {
-      setListLoaded(false);
       try {
-        if (pokedexOffSet >= 898) setPokedexOffSet(883);
-        console.log('ESTOU ATUALIZANDO O OFFSET');
-        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=15&offset=${pokedexOffSet}`);
-        setPokemonList(response.data);
+        for (let pokeId = pokedexOffSet + 1; pokeId <= pokedexOffSet + 15; pokeId++) {
+          const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeId}`);
+          setPokemonList((prevState) => [...prevState, data]);
+        }
+
         setListLoaded(true);
       } catch (e) {
         console.log(e);

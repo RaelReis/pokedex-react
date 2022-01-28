@@ -22,10 +22,15 @@ export function SearchArea() {
     }
   }
 
-  function handleOffSet(id) {
+  async function handleOffSet(id) {
     for (let pokeOffSet = 0; pokeOffSet < 898; pokeOffSet += 15) {
       if (id >= pokeOffSet && id <= pokeOffSet + 15) {
-        setPokedexOffSet(pokeOffSet);
+        if (pokeOffSet + 15 === id) {
+          setPokedexOffSet(pokeOffSet + 15);
+        } else {
+          setPokedexOffSet(pokeOffSet);
+        }
+        break;
       }
     }
   }

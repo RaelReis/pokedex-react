@@ -5,21 +5,14 @@ import { PokemonCard } from '../PokemonCard/PokemonCard';
 import { PokemonInfoCard } from '../PokemonInfoCard/PokemonInfoCard';
 
 export function PokedexMain() {
-  const { setPokemon, pokemonList, listLoaded } = usePokemon();
-
-  function handleSelectPokemon(pokeData) {
-    setPokemon(pokeData);
-  }
+  const { pokemonList, listLoaded } = usePokemon();
 
   return (
     <main className={styles.pokemonInfoContainer}>
-      <div style={!listLoaded ? { margin: '0 auto' } : {}}>
+      <div className={!listLoaded ? styles.isLoading : styles.pokedexContainer}>
         {!listLoaded && <LoadingSpinner />}
         {listLoaded && (
-          <ul className={styles.pokemonBox}>
-            {pokemonList &&
-              pokemonList.results.map((pokemon, index) => <PokemonCard key={index} pokeData={pokemon} onSelectPokemon={handleSelectPokemon} />)}
-          </ul>
+          <ul className={styles.pokemonBox}>{pokemonList && pokemonList.map((data, index) => <PokemonCard key={index} pokeData={data} />)}</ul>
         )}
       </div>
       <PokemonInfoCard />

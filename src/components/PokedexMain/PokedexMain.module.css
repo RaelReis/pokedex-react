@@ -1,18 +1,31 @@
 .pokemonInfoContainer {
-  margin: 0 8%;
+  margin: 0 10%;
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
+}
 
+.isLoading {
+  margin: 0 auto;
+}
+
+.pokedexContainer {
+  flex: 1;
+  margin: 0 100px;
 }
 
 .pokemonBox {
   flex: 1;
-  width: 100%;
   border-radius: 50px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+}
+
+@media (max-width: 1750px) {
+  .pokedexContainer {
+    margin: 0 50px;
+  }
 }
 
 @media (max-width: 1440px) {
@@ -28,9 +41,8 @@
   }
 }
 
-@media(max-width: 400px) {
-  .pokemonBox{
+@media (max-width: 400px) {
+  .pokemonBox {
     grid-template-columns: repeat(2, 1fr);
-
   }
 }
