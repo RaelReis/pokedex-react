@@ -67,9 +67,9 @@ export function SearchArea() {
         <h1>PokeDex</h1>
       </div>
       <form className={styles.inputBox} onSubmit={handleSubmit}>
-        <button onClick={handleRandomButton} style={{ position: 'absolute', left: '-200px' }} type="button">
+        {/* <button onClick={handleRandomButton} style={{ position: 'absolute', left: '-200px' }} type="button">
           teste
-        </button>
+        </button> */}
         <input
           className={styles.input}
           style={searchError ? { borderColor: 'rgba(255, 0, 0, 0.5)', boxShadow: '0px 0px 10px rgba(255, 0, 0, 0.5)' } : {}}
